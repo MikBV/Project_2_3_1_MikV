@@ -11,8 +11,9 @@ public class UserDaoImpl implements UserDao {
     public void createUsersTable() {
         EntityManager entityManager = Util.getEntityFactory();
         entityManager.getTransaction().begin();
-        entityManager.createNativeQuery();
+        //entityManager.createNativeQuery();
         entityManager.getTransaction().commit();
+        entityManager.close();
     }
 
     @Override
