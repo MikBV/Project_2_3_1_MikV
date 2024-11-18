@@ -9,19 +9,19 @@ import javax.persistence.*;
 @Table (name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique=true, nullable=false, length=64)
+    @Column(name="username",unique=true, nullable=false, length=64)
     private String username;
 
-    @Column(nullable = false, length=24)
+    @Column(name="password",nullable = false, length=24)
     private String password;
 
-    @Column(nullable=false, length=32)
+    @Column(name="firstname",nullable=false, length=32)
     private String firstName;
 
-    @Column(nullable=false, length=32)
+    @Column(name="lastname",nullable=false, length=32)
     private String lastName;
 
     public User() {

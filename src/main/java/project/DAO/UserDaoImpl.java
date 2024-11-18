@@ -1,27 +1,15 @@
 package project.DAO;
 
+import org.springframework.transaction.annotation.Transactional;
 import project.model.User;
-import project.util.Util;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
-    @Override
-    public void createUsersTable() {
-        EntityManager entityManager = Util.getEntityFactory();
-        entityManager.getTransaction().begin();
-        //entityManager.createNativeQuery();
-        entityManager.getTransaction().commit();
-        entityManager.close();
-    }
 
     @Override
-    public void dropUsersTable() {
-
-    }
-
-    @Override
+    @Transactional
     public void saveUser(String name, String lastName, byte age) {
 
     }
@@ -38,6 +26,11 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void cleanUsersTable() {
+
+    }
+
+    @Override
+    public void updateUser(User user) {
 
     }
 }
