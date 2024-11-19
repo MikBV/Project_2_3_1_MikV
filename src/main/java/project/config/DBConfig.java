@@ -15,14 +15,17 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("classpath:db.properties")
 @EnableTransactionManagement
+@PropertySource("classpath:db.properties")
 @ComponentScan(value = "project")
-
 public class DBConfig {
 
     @Autowired
     private Environment env;
+
+    static {
+        System.out.println("DBConfig loaded");
+    }
 
     @Bean
     public DataSource getDataSource() {
@@ -38,7 +41,7 @@ public class DBConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
-        Properties props=new Properties();
+        Properties props = new Properties();
         props.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
         props.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
         props.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));

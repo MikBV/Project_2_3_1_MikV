@@ -9,7 +9,7 @@ import project.model.User;
 import java.util.List;
 
 @Service
-public class UserServiceClass implements UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
