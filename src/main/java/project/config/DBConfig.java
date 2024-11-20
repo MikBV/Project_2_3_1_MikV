@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
@@ -22,10 +23,6 @@ public class DBConfig {
 
     @Autowired
     private Environment env;
-
-    static {
-        System.out.println("DBConfig loaded");
-    }
 
     @Bean
     public DataSource getDataSource() {
@@ -41,6 +38,7 @@ public class DBConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
+        factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter()); // Указываем Hibernate
         Properties props = new Properties();
         props.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
         props.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
