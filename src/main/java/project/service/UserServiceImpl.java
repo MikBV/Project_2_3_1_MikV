@@ -3,7 +3,7 @@ package project.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import project.DAO.UserDao;
+import project.dao.UserDao;
 import project.model.User;
 
 import java.util.List;
@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Transactional
+    @Override
+    public void removeUser(User user) {
+        userDao.removeUser(user);
+    }
+
+    @Transactional (readOnly = true)
     @Override
     public List<User> getAllUsers() {
         return userDao.getAllUsers();

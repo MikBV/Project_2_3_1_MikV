@@ -1,4 +1,4 @@
-package project.DAO;
+package project.dao;
 
 import org.springframework.stereotype.Repository;
 import project.model.User;
@@ -21,6 +21,11 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void removeUserById(long id) {
         entityManager.remove(entityManager.find(User.class, id));
+    }
+
+    @Override
+    public void removeUser(User user) {
+        entityManager.remove(user);
     }
 
     @Override

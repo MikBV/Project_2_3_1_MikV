@@ -1,7 +1,6 @@
 package project;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import project.config.DBConfig;
 import project.model.User;
 import project.service.UserService;
 
@@ -19,14 +18,14 @@ public class Main {
         }
 
         UserService userService = context.getBean(UserService.class);
-
-        userService.addUser(new User("User1", "password1", "firstname1", "lastname1"));
+        User user1 = new User("User1", "password1", "firstname1", "lastname1");
+        userService.addUser(user1);
 
         List<User> users = userService.getAllUsers();
         for (User user : users) {
             System.out.println(user.toString());
         }
-
+        userService.removeUser(user1);
 
 
         context.close();

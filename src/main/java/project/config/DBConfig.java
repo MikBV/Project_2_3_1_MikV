@@ -44,8 +44,10 @@ public class DBConfig {
         props.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
         props.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
         factoryBean.setPackagesToScan(env.getRequiredProperty("db.model.package"));
+        factoryBean.setJpaProperties(props);
         return factoryBean;
     }
+
 
     @Bean
     public JpaTransactionManager transactionManager() {
