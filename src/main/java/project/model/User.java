@@ -3,11 +3,16 @@ package project.model;
 import javax.persistence.*;
 
 /**
- * Сущность User
+ * Класс-сущность User
  */
 @Entity
 @Table (name = "users")
 public class User {
+
+    /**
+     * Поля сущности, 4 штуки + автогенерирующийся айдишник
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -24,6 +29,10 @@ public class User {
     @Column(name="lastname",nullable=false, length=32)
     private String lastName;
 
+    /**
+     * Конструкторы
+     */
+
     public User() {
     }
 
@@ -33,6 +42,10 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
     }
+
+    /**
+     * Геттеры и сеттеры
+     */
 
     public long getId() {
         return id;
@@ -69,6 +82,10 @@ public class User {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    /**
+     * Переопределённый toString
+     */
 
     @Override
     public String toString() {

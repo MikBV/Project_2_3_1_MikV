@@ -7,12 +7,19 @@ import project.dao.UserDao;
 import project.model.User;
 
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserDao userDao;
+
+    @PostConstruct
+    public void init() {
+        System.out.println("UserServiceImpl initialized.");
+        System.out.println("UserDao is: " + userDao);
+    }
 
     @Transactional
     @Override

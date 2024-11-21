@@ -40,7 +40,8 @@ public class DBConfig {
         factoryBean.setDataSource(getDataSource());
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter()); // Указываем Hibernate
         Properties props = new Properties();
-        props.put("hibernate.show_sql", env.getRequiredProperty("hibernate.show_sql"));
+        props.put("hibernate.show_sql", env.getProperty("hibernate.show_sql"));
+        props.put("hibernate.format_sql", env.getProperty("hibernate.format_sql"));
         props.put("hibernate.hbm2ddl.auto", env.getRequiredProperty("hibernate.hbm2ddl.auto"));
         props.put("hibernate.dialect", env.getRequiredProperty("hibernate.dialect"));
         factoryBean.setPackagesToScan(env.getRequiredProperty("db.model.package"));
