@@ -11,7 +11,7 @@
             <th>Password</th>
             <th>firstName</th>
             <th>lastName</th>
-            <th>Change</th>]
+            <th>Change</th>
             <th>Delete</th>
         </tr>
         <tr th:each="user : ${users}">
@@ -19,13 +19,18 @@
             <td th:text="${user.getPassword()}"></td>
             <td th:text="${user.getFirstName()}"></td>
             <td th:text="${user.getLastName()}"></td>
-            <a th:href="@{/edit/{id}(id=${user.getId()})}" class="btn btn-primary">Change</a>
-            <!-- Кнопка удаления -->
-            <a th:href="@{/delete/{id}(id=${user.getId()})}" class="btn btn-danger"
-               th:onclick="return confirm('Вы уверены, что хотите удалить?')">Delete</a>
+            <td>
+                <a th:href="@{/edit/{id}(id=${user.getId()})}" >Change</a>
+            </td>
+            <td>
+                <a th:href="@{/delete/{id}(id=${user.getId()})}" >Delete</a>
+            </td>
 
 
         </tr>
     </table>
+    <a href="/users/new">Add new user</a>
+
+
 </body>
 </html>
