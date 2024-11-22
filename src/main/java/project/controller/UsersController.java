@@ -38,7 +38,7 @@ public class UsersController {
     }
 
     /**
-     *
+     * Мапы для изменения пользователя
      */
 
     @GetMapping(value = "/users/change/id")
@@ -48,7 +48,7 @@ public class UsersController {
     }
 
     @PostMapping(value = "/users/change/id")
-    public String saveChangesInUser(@ModelAttribute User user) {
+    public String saveChangesInUser(@ModelAttribute User user, @RequestParam Long id) {
         userService.updateUser(user);
         return "changeconfirm";
     }
