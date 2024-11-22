@@ -48,9 +48,8 @@ public class UsersController {
     }
 
     @PostMapping(value = "/users/change/id")
-    public String saveChangesInUser(@ModelAttribute User user, Model model) {
+    public String saveChangesInUser(@ModelAttribute User user) {
         userService.updateUser(user);
-        model.addAttribute("user", userService.findUserById(user.getId()));
         return "changeconfirm";
     }
 
