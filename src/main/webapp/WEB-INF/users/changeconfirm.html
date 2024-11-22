@@ -6,6 +6,8 @@
 </head>
 <body>
     Your changes confirmed!
+    <p th:text="'User: ' + ${user.getId()}"></p>
+
     <br>
     <form th:action="@{/users}" method="get">
         <button type="submit">Back to all users</button>

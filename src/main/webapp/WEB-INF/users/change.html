@@ -24,6 +24,8 @@
         <button type="submit">Confirm changes</button>
     </form>
 
+    <p th:text="'User: ' + ${user.getId()}"></p>
+
 
     <br>
     <form th:action="@{/users}" method="get">

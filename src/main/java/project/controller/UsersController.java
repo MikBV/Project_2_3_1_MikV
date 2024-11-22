@@ -23,7 +23,7 @@ public class UsersController {
     }
 
     /**
-     *
+     * Маппинги для добавляения нового пользователя
      */
     @GetMapping(value = "/users/new")
     public String addUser(Model model) {
@@ -33,12 +33,8 @@ public class UsersController {
 
     @PostMapping(value = "/users/new")
     public String saveUser(@ModelAttribute User user) {
-        boolean checkSaving = false;
-        userService.addUser(user, checkSaving);
-        if (checkSaving) {
-            return "cangeconfirm";
-        }
-        return "changesreject";
+        userService.addUser(user);
+        return "changeconfirm";
     }
 
     /**
@@ -52,13 +48,10 @@ public class UsersController {
     }
 
     @PostMapping(value = "/users/change/id")
-    public String saveChangesInUser(@ModelAttribute User user) {
-        boolean checkUpdate = false;
-        userService.updateUser(user, checkUpdate);
-        if (checkUpdate) {
-            return "cangeconfirm";
-        }
-        return "changesreject";
+    public String saveChangesInUser(@ModelAttribute User user, Model model) {
+        userService.updateUser(user);
+        model.addAttribute("user", userService.findUserById(user.getId()));
+        return "changeconfirm";
     }
 
     /**
@@ -98,6 +91,6 @@ public class UsersController {
     @PostMapping(value = "/users/delete/id")
     public String deletingUserById(@RequestParam(value = "id", required = true) Long id) {
         userService.removeUserById(id);
-        return "users";
+        return "changeconfirm";
     }
 }

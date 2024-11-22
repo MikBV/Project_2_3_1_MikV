@@ -23,9 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void addUser(User user, boolean checkSaving) {
+    public void addUser(User user) {
         userDao.addUser(user);
-        checkSaving = true;
     }
 
     @Transactional
@@ -48,9 +47,8 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void updateUser(User user, boolean checkUpdate) {
+    public void updateUser(User user) {
         userDao.updateUser(user);
-        checkUpdate = true;
     }
 
     @Override
