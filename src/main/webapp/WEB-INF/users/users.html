@@ -20,10 +20,10 @@
             <td th:text="${user.getFirstName()}"></td>
             <td th:text="${user.getLastName()}"></td>
             <td>
-                <a th:href="@{users/change/{id}(id=${user.getId()})}" >Change</a>
+                <a th:href="@{users/change/id(id=${user.getId()})}" >Change</a>
             </td>
             <td>
-                <a th:href="@{users/delete/(id=${user.getId()})}" >Delete</a>
+                <a th:href="@{users/delete/id(id=${user.getId()})}" >Delete</a>
             </td>
 
 
