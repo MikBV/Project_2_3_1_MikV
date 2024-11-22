@@ -32,7 +32,7 @@ public class UsersController {
         return "change";
     }
 
-    @GetMapping(value = "/users/delete")
+    @GetMapping(value = "/users/delete/id")
     public String deleteUserById(@RequestParam(value = "id", required = true) Long id, Model model) {
         model.addAttribute("user", userService.findUserById(id));
         return "delete";
