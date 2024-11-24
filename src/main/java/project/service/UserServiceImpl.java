@@ -15,12 +15,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao userDao;
 
-    @PostConstruct
-    public void init() {
-        System.out.println("UserServiceImpl initialized.");
-        System.out.println("UserDao is: " + userDao);
-    }
-
     @Transactional
     @Override
     public void addUser(User user) {
@@ -31,12 +25,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void removeUserById(long id) {
         userDao.removeUserById(id);
-    }
-
-    @Transactional
-    @Override
-    public void removeUser(User user) {
-        userDao.removeUser(user);
     }
 
     @Transactional (readOnly = true)

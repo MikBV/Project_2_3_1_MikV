@@ -49,7 +49,6 @@ public class DBConfig {
         return factoryBean;
     }
 
-
     @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();

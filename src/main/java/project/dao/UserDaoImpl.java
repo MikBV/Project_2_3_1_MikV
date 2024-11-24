@@ -24,11 +24,6 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void removeUser(User user) {
-        entityManager.remove(user);
-    }
-
-    @Override
     public List<User> getAllUsers() {
         String hql = "from User";
         return entityManager.createQuery(hql).getResultList();
