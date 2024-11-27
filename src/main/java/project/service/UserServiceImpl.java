@@ -12,8 +12,12 @@ import javax.annotation.PostConstruct;
 @Service
 public class UserServiceImpl implements UserService {
 
-    @Autowired
     private UserDao userDao;
+
+    @Autowired
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     @Transactional
     @Override
@@ -39,6 +43,7 @@ public class UserServiceImpl implements UserService {
         userDao.updateUser(user);
     }
 
+    @Transactional
     @Override
     public User findUserById(long id) {
         return userDao.findUserById(id);

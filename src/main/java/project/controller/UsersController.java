@@ -13,11 +13,22 @@ import project.service.UserService;
 @Controller
 public class UsersController {
 
-    @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/users")
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping(value = "/index")
     public String index(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
+        return "users";
+    }
+
+
+    @GetMapping(value = "/users")
+    public String showUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users";
     }
