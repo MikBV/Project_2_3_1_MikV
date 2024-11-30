@@ -16,7 +16,7 @@ public class UsersController {
     private UserService userService;
 
     @Autowired
-    public void setUserService(UserService userService) {
+    public UsersController(UserService userService) {
         this.userService = userService;
     }
 
@@ -89,7 +89,7 @@ public class UsersController {
     */
 
     /**
-     *
+     * Маппинги для удаления
      */
 
     @GetMapping(value = "/users/delete/id")

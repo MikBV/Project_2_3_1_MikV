@@ -21,9 +21,16 @@ import java.util.Properties;
 @ComponentScan(value = "project")
 public class DBConfig {
 
-    @Autowired
     private Environment env;
 
+    @Autowired
+    public DBConfig(Environment env) {
+        this.env = env;
+    }
+
+    /**
+     * Конфигурация для доступа к базе
+     */
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -34,6 +41,9 @@ public class DBConfig {
         return dataSource;
     }
 
+    /**
+     * Конфигурация для создания EntityManager
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
@@ -49,6 +59,9 @@ public class DBConfig {
         return factoryBean;
     }
 
+    /**
+     * Конфигурация для подключения аннотации @Transactional
+     */
     @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
