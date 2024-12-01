@@ -7,7 +7,6 @@ import project.dao.UserDao;
 import project.model.User;
 
 import java.util.List;
-import javax.annotation.PostConstruct;
 
 @Service
 public class UserServiceImpl implements UserService {

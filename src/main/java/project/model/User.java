@@ -1,12 +1,13 @@
 package project.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 
 /**
  * Класс-сущность User
  */
 @Entity
-@Table (name = "users")
+@Table(name = "users")
 public class User {
 
     /**
