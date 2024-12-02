@@ -8,28 +8,29 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import project.model.User;
-import project.service.UserService;
+import project.repository.UserRepository;
 
 @Controller
 public class UsersController {
 
-    private UserService userService;
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired
-    public UsersController(UserService userService) {
-        this.userService = userService;
+    public UsersController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @GetMapping(value = "/index")
     public String index(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("users", userRepository.findAll());
         return "users";
     }
 
 
     @GetMapping(value = "/users")
     public String showUsers(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
+        model.addAttribute("users", userRepository.findAll());
         return "users";
     }
 
@@ -44,7 +45,7 @@ public class UsersController {
 
     @PostMapping(value = "/users/new")
     public String saveUser(@ModelAttribute User user) {
-        userService.addUser(user);
+        userRepository.save(user);
         return "changeconfirm";
     }
 
@@ -54,13 +55,13 @@ public class UsersController {
 
     @GetMapping(value = "/users/change/id")
     public String changeUserById(@RequestParam(value = "id", required = true) Long id, Model model) {
-        model.addAttribute("user", userService.findUserById(id));
+        model.addAttribute("user", userRepository.findById(id));
         return "change";
     }
 
     @PostMapping(value = "/users/change/id")
     public String saveChangesInUser(@ModelAttribute User user, @RequestParam Long id) {
-        userService.updateUser(user);
+        userRepository.save(user);
         return "changeconfirm";
     }
 
@@ -94,13 +95,13 @@ public class UsersController {
 
     @GetMapping(value = "/users/delete/id")
     public String deleteUserById(@RequestParam(value = "id", required = true) Long id, Model model) {
-        model.addAttribute("user", userService.findUserById(id));
+        model.addAttribute("user", userRepository.findById(id));
         return "delete";
     }
 
     @PostMapping(value = "/users/delete/id")
     public String deletingUserById(@RequestParam(value = "id", required = true) Long id) {
-        userService.removeUserById(id);
+        userRepository.deleteById(id);
         return "changeconfirm";
     }
 }
