@@ -10,5 +10,4 @@ public class WebConfig {
     public static void main(String[] args) {
         SpringApplication.run(WebConfig.class, args);
     }
-
 }
