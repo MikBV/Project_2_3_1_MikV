@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import project.model.User;
 import project.repository.UserRepository;
 
+import java.util.Optional;
+
 @Controller
 public class UsersController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     public UsersController(UserRepository userRepository) {
@@ -52,7 +53,9 @@ public class UsersController {
 
     @GetMapping(value = "/users/change/id")
     public String changeUserById(@RequestParam(value = "id", required = true) Long id, Model model) {
-        model.addAttribute("user", userRepository.findById(id));
+        Optional<User> optiUser = userRepository.findById(id);
+        User user = optiUser.orElse(null);
+        model.addAttribute("user", user);
         return "change";
     }
 
@@ -68,7 +71,9 @@ public class UsersController {
 
     @GetMapping(value = "/users/delete/id")
     public String deleteUserById(@RequestParam(value = "id", required = true) Long id, Model model) {
-        model.addAttribute("user", userRepository.findById(id));
+        Optional<User> optiUser = userRepository.findById(id);
+        User user = optiUser.orElse(null);
+        model.addAttribute("user", user);
         return "delete";
     }
 
