@@ -21,6 +21,8 @@ public class UsersController {
 
     @GetMapping(value = "/index")
     public String index(Model model) {
+        System.out.println("Hello, I'm index");
+
         model.addAttribute("users", userRepository.findAll());
         return "users";
     }
@@ -28,6 +30,7 @@ public class UsersController {
 
     @GetMapping(value = "/users")
     public String getUsers(Model model) {
+        System.out.println("Hello, I'm getusers");
         model.addAttribute("users", userRepository.findAll());
         return "users";
     }
