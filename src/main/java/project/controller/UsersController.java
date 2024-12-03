@@ -35,6 +35,7 @@ public class UsersController {
     /**
      * Маппинги для добавляения нового пользователя
      */
+
     @GetMapping(value = "/users/new")
     public String addUser(Model model) {
         model.addAttribute("user", new User());
