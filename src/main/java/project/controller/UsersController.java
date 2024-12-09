@@ -20,18 +20,18 @@ public class UsersController {
         this.userService = userService;
     }
 
-    @GetMapping(value = "/index")
+    @GetMapping(value = {"/index", "/users"})
     public String index(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users";
     }
 
 
-    @GetMapping(value = "/users")
+    /*@GetMapping(value = "/users")
     public String showUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "users";
-    }
+    }*/
 
     /**
      * Маппинги для добавляения нового пользователя
